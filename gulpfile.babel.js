@@ -32,20 +32,22 @@ gulp.task('bump-patch', function () {
 
 gulp.task('minify-and-concat-css', function () {
     return gulp
-        .src('src/css/*.css')
+        .src('dist/css/*.css')
         .pipe(sourcemaps.init())
         .pipe(cleanCSS())
         .pipe(sourcemaps.write())
-        .pipe(concat('main.min.css'))
+        .pipe(concat('main.css'))
         .pipe(gulp.dest('dist/css/'))
 });
 
-gulp.task('pre-build', function () {
+gulp.task('pre-build', [
+    'clean-js'
+], function () {
     return gutil.log('Gulp is building!');
 });
 
 gulp.task('build', [
-    'pre-build', 'clean-js', 'minify-and-concat-css', 'bump-patch'
+    'pre-build', 'minify-and-concat-css', 'bump-patch'
 ], function () {
     gulp
         .src('src/js/*.js')
@@ -58,7 +60,7 @@ gulp.task('build', [
 });
 
 gulp.task('clean-js', function () {
-    gutil.log('Started Cleaning old build');
+    gutil.log('Started Cleaning old js');
     return gulp
         .src('dist/js/main.min.js', {read: false})
         .pipe(clean());
