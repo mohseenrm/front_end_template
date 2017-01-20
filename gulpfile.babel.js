@@ -1,4 +1,6 @@
 'use strict';
+
+//need to add sass compiling
 const gulp = require('gulp'),
     uglify = require('gulp-uglify'),
     concat = require('gulp-concat'),
