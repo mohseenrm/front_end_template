@@ -7,7 +7,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "gulp build",
     "build:watch": "babel -w src/js/ -d dist/js/ -s",
-    "build:webpack": "./node_modules/webpack"
+    "build:webpack": "./node_modules/.bin/webpack"
   },
   "repository": {
     "type": "https",
